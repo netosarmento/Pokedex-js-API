@@ -2,4 +2,4 @@
 
 ## Professor Renan Johannsen 
 
-Site de Pokedex feito com HTML, CSS e Javascript.
+Site de Pokedex feito com HTML, CSS e Javascript e integração API.
