@@ -1,6 +1,3 @@
-const offset = 0;
-const limit = 10;
-
 /*   Criando uma Função Javascript encaixando o Json no HTML  */
 
 function convertPokemonHTML(pokemon) {
@@ -17,17 +14,15 @@ function convertPokemonHTML(pokemon) {
             </li>
             ` 
 }
-/*  Utilizando Fetch API - Ja Integrado aos browser        */
-const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
-/* Chamando a biblioteca */
-fetch(url)
-    .then(function (response) {    /* metodo then chama uma função, se nao seria .then((response) => {} */
-    return response.json()
-    .then((jsonresponse) =>jsonresponse.results)
-    .then((pokemonList) => {
-        for (let i = 0; i < pokemonList.length; i++) {
-            const pokemon = pokemonList[i];
-            console.log(convertPokemonHTML(pokemon))
+
+const pokemonList = document.getElementById('pokemonList')
+
+
+/* Chamando a biblioteca e api*/
+pokeapi.getPokemons().then((pokemons) => {
+        for (let i = 0; i < pokemons.length; i++) {
+            const pokemon = pokemons[i];
+            pokemonList.innerHTML += convertPokemonHTML(pokemon)
         }
-    })
-    .catch((error) => {console.error(error)})/* Filtrando error usando catch, e usando sintaxe reduzida */
+})
+    
