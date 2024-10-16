@@ -19,10 +19,19 @@ const pokemonList = document.getElementById('pokemonList')
 
 
 /* Chamando a biblioteca e api*/
-pokeapi.getPokemons().then((pokemons) => {
-        for (let i = 0; i < pokemons.length; i++) {
+pokeapi.getPokemons().then((pokemons = []) => {
+        
+        const newList = pokemons.map((pokemon) => {
+        return convertPokemonHTML(pokemon)
+       })
+       
+       const newHtml = newList.join('')
+       pokemonList.innerHTML += newHtml
+    
+    /*
+    for (let i = 0; i < pokemons.length; i++) {
             const pokemon = pokemons[i];
             pokemonList.innerHTML += convertPokemonHTML(pokemon)
-        }
+        } */
 })
     
