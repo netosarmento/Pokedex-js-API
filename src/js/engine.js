@@ -1,3 +1,9 @@
+let offset = 0;
+const limit = 5;
+const pokemonList = document.getElementById('pokemonList')
+const LoadMoreButton = document.getElementById('LoadMore')
+
+
 /* criando função javascript pra manipular string em html li */
 
 function convetPokemonTypestoli(pokemonTypes) {   /* to pegando do cabeçalho as informaçoes e jogando direto no html dinamicamente */
@@ -20,17 +26,25 @@ function convertPokemonHTML(pokemon) {
             ` 
 }
 
-const pokemonList = document.getElementById('pokemonList')
 
 
 /* Chamando a biblioteca e api*/
 pokeapi.getPokemons().then((pokemons = []) => {
        pokemonList.innerHTML += pokemons.map(convertPokemonHTML).join('')
     
-    /*
-    for (let i = 0; i < pokemons.length; i++) {
-            const pokemon = pokemons[i];
-            pokemonList.innerHTML += convertPokemonHTML(pokemon)
-        } */
+})
+
+
+function loadPokemonItens(offset, limit) {
+    pokeapi.getPokemons(offset, limit).then((pokemons = []) => {
+        const newHtml = pokemons.map(convertPokemonHTML).join('')
+        pokemonList.innerHTML += newHtml
+    })
+}
+
+LoadMoreButton.addEventListener('click', () => {
+    offset += limit
+    loadPokemonItens(offset, limit)
+  
 })
     
