@@ -8,13 +8,13 @@ function convetPokemonTypestoli(pokemonTypes) {   /* to pegando do cabeçalho as
 /* Transformei toda a string li html no meu objeto */
 function convertPokemonHTML(pokemon) {
     return `<li class="pokemon">
-                <span class="number">#0${pokemon.order}</span>
+                <span class="number">#0${pokemon.number}</span>
                 <span class="name">${pokemon.name}</span>
                 <div class="detail">
                     <ol class="types">
-                        ${convetPokemonTypestoli(pokemon.types).join('')}
+                        ${pokemon.types.map((type) => `<li class="type">${type}</li>`)}
                     </ol>
-                    <img src="${pokemon.sprites.other.dream_world.front_default}" alt="${pokemon.name}">
+                    <img src="${pokemon.img}" alt="${pokemon.name}">
                 </div>
             </li>
             ` 
