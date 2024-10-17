@@ -1,5 +1,5 @@
 /*   Criando uma Função Javascript encaixando o Json no HTML  */
-
+/* Transformei toda a string li html no meu objeto */
 function convertPokemonHTML(pokemon) {
     return `<li class="pokemon">
                 <span class="number">#001</span>
@@ -20,13 +20,7 @@ const pokemonList = document.getElementById('pokemonList')
 
 /* Chamando a biblioteca e api*/
 pokeapi.getPokemons().then((pokemons = []) => {
-        
-        const newList = pokemons.map((pokemon) => {
-        return convertPokemonHTML(pokemon)
-       })
-       
-       const newHtml = newList.join('')
-       pokemonList.innerHTML += newHtml
+       pokemonList.innerHTML += pokemons.map(convertPokemonHTML).join('')
     
     /*
     for (let i = 0; i < pokemons.length; i++) {
