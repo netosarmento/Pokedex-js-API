@@ -7,12 +7,12 @@ function convetPokemonTypestoli(pokemonTypes) {   /* to pegando do cabeçalho as
 /*   Criando uma Função Javascript encaixando o Json no HTML  */
 /* Transformei toda a string li html no meu objeto */
 function convertPokemonHTML(pokemon) {
-    return `<li class="pokemon">
+    return `<li class="pokemon ${pokemon.type}">
                 <span class="number">#0${pokemon.number}</span>
                 <span class="name">${pokemon.name}</span>
                 <div class="detail">
                     <ol class="types">
-                        ${pokemon.types.map((type) => `<li class="type">${type}</li>`)}
+                        ${pokemon.types.map((type) => `<li class="type">${type}</li>`).join('')}
                     </ol>
                     <img src="${pokemon.img}" alt="${pokemon.name}">
                 </div>
