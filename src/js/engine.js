@@ -1,15 +1,20 @@
+/* criando função javascript pra manipular string em html li */
+
+function convetPokemonTypestoli(pokemonTypes) {   /* to pegando do cabeçalho as informaçoes e jogando direto no html dinamicamente */
+  return pokemonTypes.map((typeSlot) => `<li class="type">${typeSlot.type.name}</li>`)
+}
+
 /*   Criando uma Função Javascript encaixando o Json no HTML  */
 /* Transformei toda a string li html no meu objeto */
 function convertPokemonHTML(pokemon) {
     return `<li class="pokemon">
-                <span class="number">#001</span>
+                <span class="number">${pokemon.order}</span>
                 <span class="name">${pokemon.name}</span>
                 <div class="detail">
                     <ol class="types">
-                        <li class="type">Grass</li>
-                        <li class="type">Poison</li>
+                        ${convetPokemonTypestoli(pokemon.types).join('')}
                     </ol>
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" alt="${pokemon.name}">
+                    <img src="${pokemon.sprites.other.dream_world.front_default}" alt="${pokemon.name}">
                 </div>
             </li>
             ` 
