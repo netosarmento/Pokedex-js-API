@@ -4,6 +4,9 @@ const limit = 5;
 const pokemonList = document.getElementById('pokemonList')
 const LoadMoreButton = document.getElementById('LoadMore')
 
+let infoButton = document.createElement('div')
+infoButton.className = "card" /* criando classe pra botar html*/
+infoButton.innerHTML = /* criar funçao que criar o html de classe card */
 
 /* criando função javascript pra manipular string em html li */
 
@@ -15,6 +18,7 @@ function convetPokemonTypestoli(pokemonTypes) {   /* to pegando do cabeçalho as
 /* Transformei toda a string li html no meu objeto */
 function convertPokemonHTML(pokemon) {
     return `<li class="pokemon ${pokemon.type}">
+                <button id="info" type="button"> +Info </button>
                 <span class="number">#0${pokemon.number}</span>
                 <span class="name">${pokemon.name}</span>
                 <div class="detail">
