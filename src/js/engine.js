@@ -1,3 +1,4 @@
+/* const maxRecords = 151   -> para criar o limite   */
 let offset = 0;
 const limit = 5;
 const pokemonList = document.getElementById('pokemonList')
@@ -34,6 +35,7 @@ pokeapi.getPokemons().then((pokemons = []) => {
     
 })
 
+loadPokemonItens(offset, limit)
 
 function loadPokemonItens(offset, limit) {
     pokeapi.getPokemons(offset, limit).then((pokemons = []) => {
@@ -44,7 +46,16 @@ function loadPokemonItens(offset, limit) {
 
 LoadMoreButton.addEventListener('click', () => {
     offset += limit
-    loadPokemonItens(offset, limit)
-  
+    loadPokemonItens(offset, limit) /* botaria isso nessa linha => const qtdRecordsWithNexPage = offset + limit
+
+    if (qtdRecordsWithNexPage >= maxRecords) {
+        const newLimit = maxRecords - offset
+        loadPokemonItens(offset, newLimit)
+
+        loadMoreButton.parentElement.removeChild(loadMoreButton)
+    } else {
+        loadPokemonItens(offset, limit)
+    }
+  */
 })
     
