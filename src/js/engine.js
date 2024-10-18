@@ -58,5 +58,3 @@ LoadMoreButton.addEventListener('click', () => {
     }
   */
 })
-
-/* fazendo teste */
