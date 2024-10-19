@@ -18,8 +18,13 @@ function handleClick(pokemon) {
     }
 }
 
+
 function botaoPokemonInfo(pokemon) {
-    console.log('Pokemon Info:', pokemon); // verificando o pokemon objeto
+    console.log('Pokemon Info:', pokemon); // Verificando o objeto Pokémon
+    if (!pokemon) {
+        console.error("Nenhum Pokémon fornecido para criar a info.");
+        return '';
+    }
     return `
         <div class="card-container">
             <div class="card">
@@ -94,13 +99,21 @@ function loadPokemonItens(offset, limit) {
         // Adiciona o evento de clique para os botões "+Info" criados dinamicamente
         document.querySelectorAll('.info-btn').forEach(button => {
             button.addEventListener('click', function () {
-                const pokemon = pokemons.find(p => p.name === this.closest('.pokemon').querySelector('.name').textContent);
-                console.log("Pokémon clicado:", pokemon); // verificando se esta funcionando
-                handleClick(pokemon);
+                const pokemonName = this.closest('.pokemon').querySelector('.name').textContent;
+                const pokemon = pokemons.find(p => p.name.toLowerCase() === pokemonName.toLowerCase());
+
+                if (pokemon) {
+                    console.log("Pokémon clicado:", pokemon); // Verificando se está funcionando
+                    handleClick(pokemon);
+                } else {
+                    console.error("Pokémon não encontrado:", pokemonName);
+                }
             });
         });
     });
 }
+
+
 
 LoadMoreButton.addEventListener('click', () => {
     offset += limit
