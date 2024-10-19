@@ -4,17 +4,7 @@ const limit = 5;
 const pokemonList = document.getElementById('pokemonList')
 const LoadMoreButton = document.getElementById('LoadMore')
 
-// function handleClick(pokemon) {
-//    const existingCard = document.querySelector('.card'); /* verficicar se nao tem um aberto para poder abrir */
-//    if (existingCard) {
-        // Remove o card existentente se existir
-//        existingCard.remove();
-//    } else   {
-//        const infoButton = document.createElement('div') /* criando a div pra botar o html */ 
-//        infoButton.className = "card" /* criando classe pra botar html*/
-//        infoButton.innerHTML =  botaoPokemonInfo(pokemon); /* criar funçao que criar o html de classe card */
-//        document.body.appendChild(infoButton) /* mostrando o html criando botao no body */
-    
+ 
 function handleClick(pokemon) {
     const existingCard = document.querySelector('.card');
     if (existingCard) {
@@ -29,6 +19,7 @@ function handleClick(pokemon) {
 }
 
 function botaoPokemonInfo(pokemon) {
+    console.log('Pokemon Info:', pokemon); // verificando o pokemon objeto
     return `
         <div class="card-container">
             <div class="card">
