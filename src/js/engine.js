@@ -9,13 +9,17 @@ function handleClick(pokemon) {
     const existingCard = document.querySelector('.card');
     if (existingCard) {
         existingCard.remove();
-    } else {
-        const infoButton = document.createElement('div');
-        infoButton.className = "card";
-        infoButton.innerHTML = botaoPokemonInfo(pokemon); // Atualizado
-        document.body.appendChild(infoButton);
-        console.log("Card criado:", infoButton);
     }
+    const infoButton = document.createElement('div'); //criando a div do card
+    infoButton.className = "card"; // dando nome a classe
+    infoButton.innerHTML = botaoPokemonInfo(pokemon); // Atualizado
+    document.body.appendChild(infoButton); //adicionando com append ao html
+    console.log("Card criado:", infoButton);
+    
+    const closeButton = infoButton.querySelector('.close'); //adicionando o botao e função pra fechar o html
+    closeButton.addEventListener('click', function() {
+        infoButton.remove(); // Remove o card do DOM
+    });
 }
 
 
@@ -25,12 +29,16 @@ function botaoPokemonInfo(pokemon) {
         console.error("Nenhum Pokémon fornecido para criar a info.");
         return '';
     }
+
+    const movesList = pokemon.moves.slice(0, 2).map(move => `<li>${move}</li>`).join('');
     return `
         <div class="card-container">
-            <div class="card">
+            <div class="card ${pokemon.type}">
+            
+                <button class="close" type="button"> X </button> 
                 <div class="main">
-                    <img class='tokenImage' src="${pokemon.img}" alt="${pokemon.name}" />
-                    <h2>#${pokemon.number}</h2>
+                    <img class='pokeImage' src="${pokemon.img}" alt="${pokemon.name}" />
+                    <h2>#0${pokemon.number}</h2>
                     <p class='description'>Base experience: ${pokemon.base_experience}</p>
                     <div class='tokenInfo'>
                         <div class="price">
@@ -42,7 +50,7 @@ function botaoPokemonInfo(pokemon) {
                     </div>
                     <hr />
                     <div class='creator'>
-                        <p>Moves: </p>
+                        <p>Moves: ${movesList} </p>
                     </div>
                 </div>
                 <div class="back">
@@ -88,6 +96,7 @@ pokeapi.getPokemons().then((pokemons = []) => {
 })
 
 
+
 loadPokemonItens(offset, limit)
 
 
@@ -130,46 +139,3 @@ LoadMoreButton.addEventListener('click', () => {
   */
 })
 
-
-//         const listItens = []    
-
-//         for (let i = 0; i < pokemons.length; i++) {
-//             const pokemon = pokemons[i];
-           
-//             listItens.push(convertPokemonToLi(pokemon))
-           
-//         }
-//         console.log(listItens)
-
-
-
-
-
-//debugger //usado para testagem de debugação no browser sem ter que ficar procurando
-
-
-//  try{
-//  }catch(error){
-//  }finally{
-//  }
-
-//Código explicado da aula:
-
-// fetch(url)//promise, mecanismo para controlar a interpretação da resposta e dar um destino adequado
-
-// .then(function (response){
-//         console.log(response) //quando der certo chame essa função para manipular a resposta
-//  })//processamento assincrono
-
-//  .catch(function (error){
-//     console.log(error)//para manipular o fracasso
-//  })
-
-// //Toda vez que essa requisição terminasse independente do sucesso ou do fracasso eu poderia ter:
-
-//  .finally(function (){
-//     console.log('requisição concluída!')
-//  })
-
-//  const x = 10+2
-//  console.log(x)
