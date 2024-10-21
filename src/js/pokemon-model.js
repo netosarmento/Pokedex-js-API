@@ -7,4 +7,8 @@ class Pokemon {
     type;
     types = [];
     img;
+    moves = [];
+    move;
+    abilities = [];
+    abilitie;
 }

@@ -30,37 +30,46 @@ function botaoPokemonInfo(pokemon) {
         return '';
     }
 
+    // Gerar a lista de habilidades e movimentos corretamente
+    const abilitiesList = pokemon.abilities.slice(0, 2).map(ability => `<li>${ability}</li>`).join('');
     const movesList = pokemon.moves.slice(0, 2).map(move => `<li>${move}</li>`).join('');
+
     return `
         <div class="card-container">
             <div class="card ${pokemon.type}">
-            
                 <button class="close" type="button"> X </button> 
                 <div class="main">
                     <img class='pokeImage' src="${pokemon.img}" alt="${pokemon.name}" />
                     <h2>#0${pokemon.number}</h2>
-                    <p class='description'>Base experience: ${pokemon.base_experience}</p>
-                    <div class='tokenInfo'>
-                        <div class="price">
-                            <p>Height: ${pokemon.height} m</p>
+                    <span class="typecard">${pokemon.type}</span> 
+                    <p class='description'>Experiência de Base: ${pokemon.base_experience}</p>
+                    <div class='pokeInfo'>
+                        <div class="height">
+                            <p>Altura: ${pokemon.height} m</p>
                         </div>
-                        <div class="duration">
-                            <p>Weight: ${pokemon.weight} kg</p>
+                        <div class="weight">
+                            <p>Peso: ${pokemon.weight} kg</p>
                         </div>
                     </div>
                     <hr />
                     <div class='creator'>
-                        <p>Moves: ${movesList} </p>
+                        <p>Ataques:</p>
+                        <ul>
+                            ${movesList}
+                        </ul>
                     </div>
                 </div>
                 <div class="back">
-                    <h2>Conteúdo Extra</h2>
-                    <p>Mais informações sobre ${pokemon.name}.</p>
+                    <h2>Habilidades ${pokemon.name}:</h2>
+                    <ul>
+                        ${abilitiesList}
+                    </ul>
                 </div>
             </div>
         </div>
     `;
 }
+
 
 
 
