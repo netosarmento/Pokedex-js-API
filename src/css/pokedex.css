@@ -112,6 +112,7 @@ h2, .typecard {
     position: relative;
     right: -60%;
     background-color: #8a2be2;
+    text-transform: capitalize;
 }
 
 
@@ -309,6 +310,7 @@ hr {
          border-radius: 1rem;
      }
  }
+
  
  @media screen and (min-width: 380px) {
      .pokemons {
@@ -328,3 +330,26 @@ hr {
          grid-template-columns: 1fr 1fr 1fr 1fr;
      }
  }
+
+ @media screen and (max-width: 992px) {
+    .content {
+        max-width: 100%; 
+        margin: 1rem; 
+        border-radius: 0.5rem; 
+    }
+
+    .card {
+        width: 32%; 
+        margin: 1rem auto; 
+        padding: 1rem; 
+        border: 1px solid #ccc; 
+    }
+}
+
+
+@media screen and (max-width: 576px) {
+    .card {
+        width: 100%; 
+        padding: 0.5rem; 
+    }
+}
